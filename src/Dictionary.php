@@ -22,7 +22,7 @@ class Dictionary
     {
         // Get default locale string in laravel project
         // and set it as default dictionary
-        $locale = Config::has('app.locale') ? Config::get('app.locale') : 'en';
+        $locale = Config::has('app.locale') ? Config::get('app.locale') : 'en_US';
 
         $this->setDictionary($dictionary ?: $locale);
     }
@@ -60,8 +60,8 @@ class Dictionary
         $baseDictPath = $this->getBaseDictPath();
         if (is_array($dictionary)) {
             foreach ($dictionary as $file) {
-                if (file_exists($baseDictPath.$file.'.php')) {
-                    $dict = include $baseDictPath.$file.'.php';
+                if (file_exists($baseDictPath . $file . '.php')) {
+                    $dict = include $baseDictPath . $file . '.php';
                     $words = array_merge($words, $dict);
                 } else {
                     // if the file isn't in the dict directory,
@@ -72,8 +72,8 @@ class Dictionary
             }
             // just a single string, not an array
         } elseif (is_string($dictionary)) {
-            if (file_exists($baseDictPath.$dictionary.'.php')) {
-                $dict = include $baseDictPath.$dictionary.'.php';
+            if (file_exists($baseDictPath . $dictionary . '.php')) {
+                $dict = include $baseDictPath . $dictionary . '.php';
                 $words = array_merge($words, $dict);
             } else {
                 if (file_exists($dictionary)) {
@@ -93,6 +93,6 @@ class Dictionary
      */
     protected function getBaseDictPath()
     {
-        return property_exists($this, 'baseDictPath') ? $this->baseDictPath : __DIR__.DIRECTORY_SEPARATOR.'dict/';
+        return property_exists($this, 'baseDictPath') ? $this->baseDictPath : __DIR__ . DIRECTORY_SEPARATOR . 'dict/';
     }
 }
