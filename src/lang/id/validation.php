@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'profane' => ':attribute mengandung konten yang vulgar',
+    'profane' => ':attribute mengandung konten yang vulgar.',
 ];
